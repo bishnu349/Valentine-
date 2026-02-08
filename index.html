@@ -54,19 +54,59 @@
             }
         }
 
-        /* Decorative Elements */
+        /* Enhanced Sparkle Effects */
         .sparkle {
             position: absolute;
-            width: 4px;
-            height: 4px;
+            width: 6px;
+            height: 6px;
             background: white;
             border-radius: 50%;
             animation: sparkle 2s infinite;
+            box-shadow: 0 0 10px white;
         }
 
         @keyframes sparkle {
-            0%, 100% { opacity: 0; transform: scale(0); }
-            50% { opacity: 1; transform: scale(1); }
+            0%, 100% { 
+                opacity: 0; 
+                transform: scale(0) rotate(0deg);
+            }
+            50% { 
+                opacity: 1; 
+                transform: scale(1.5) rotate(180deg);
+            }
+        }
+
+        /* Continuous sparkles background */
+        .sparkle-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .continuous-sparkle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            animation: continuousSparkle 3s infinite ease-in-out;
+        }
+
+        @keyframes continuousSparkle {
+            0%, 100% { 
+                opacity: 0; 
+                transform: scale(0);
+                box-shadow: 0 0 0 rgba(255, 255, 255, 0);
+            }
+            50% { 
+                opacity: 1; 
+                transform: scale(2);
+                box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+            }
         }
 
         /* Page Container */
@@ -127,6 +167,11 @@
             transform: scale(0.95);
         }
 
+        .nav-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
         /* Decorative Lines */
         .deco-line {
             width: 80%;
@@ -168,14 +213,15 @@
         #page17 { background: radial-gradient(ellipse at top, #ffd4f0 0%, #ffbbdd 50%, #ffa2ca 100%); }
         #page18 { background: linear-gradient(135deg, #c9a0ff 0%, #b88aff 50%, #a774ff 100%); }
         #page19 { background: radial-gradient(circle at center, #ffa8d5 0%, #ff8fc4 50%, #ff76b3 100%); }
-        #page20 { background: linear-gradient(135deg, #ffd4cc 0%, #ffbfb3 50%, #ffaa99 100%); }
-        #page21 { background: radial-gradient(circle at top, #ff99cc 0%, #ff77b3 50%, #ff5599 100%); }
-        #page22 { background: linear-gradient(to bottom, #e6ccff 0%, #d4b3ff 50%, #c299ff 100%); }
-        #page23 { background: linear-gradient(135deg, #ffe4f0 0%, #ffd1dd 50%, #ffbdca 100%); }
-        #page24 { background: radial-gradient(ellipse at center, #ffe4f0 0%, #ffd1dd 50%, #ffbdca 100%); }
-        #page25 { background: linear-gradient(to right, #ffc9e5 0%, #ffb3d9 50%, #ff9dcc 100%); }
-        #page26 { background: radial-gradient(circle at top, #ffd9f0 0%, #ffc0dd 50%, #ffa7ca 100%); }
-        #page27 { 
+        #page20 { background: linear-gradient(135deg, #ffb8d9 0%, #ff9fc4 50%, #ff86af 100%); }
+        #page21 { background: linear-gradient(135deg, #ffd4cc 0%, #ffbfb3 50%, #ffaa99 100%); }
+        #page22 { background: radial-gradient(circle at top, #ff99cc 0%, #ff77b3 50%, #ff5599 100%); }
+        #page23 { background: linear-gradient(to bottom, #e6ccff 0%, #d4b3ff 50%, #c299ff 100%); }
+        #page24 { background: linear-gradient(135deg, #ffe4f0 0%, #ffd1dd 50%, #ffbdca 100%); }
+        #page25 { background: radial-gradient(ellipse at center, #ffe4f0 0%, #ffd1dd 50%, #ffbdca 100%); }
+        #page26 { background: linear-gradient(to right, #ffc9e5 0%, #ffb3d9 50%, #ff9dcc 100%); }
+        #page27 { background: radial-gradient(circle at top, #ffd9f0 0%, #ffc0dd 50%, #ffa7ca 100%); }
+        #page28 { 
             background: linear-gradient(135deg, #ff6b9d 0%, #c5a3ff 25%, #ffa8d5 50%, #ff8fc4 75%, #e6b8ff 100%);
             animation: rainbowShift 5s infinite alternate;
         }
@@ -306,7 +352,7 @@
             backdrop-filter: blur(10px);
         }
 
-        /* Audio Player */
+        /* Audio Container */
         .audio-container {
             background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(15px);
@@ -315,6 +361,7 @@
             max-width: 90%;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
             border: 3px solid rgba(255, 255, 255, 0.6);
+            text-align: center;
         }
 
         .audio-container h2 {
@@ -322,7 +369,6 @@
             font-size: 2.2rem;
             color: #ff1493;
             margin-bottom: 25px;
-            text-align: center;
         }
 
         .audio-container audio {
@@ -337,6 +383,65 @@
             color: #6b1545;
             text-align: center;
             margin-top: 20px;
+            font-weight: 600;
+        }
+
+        /* Audio Recording Section */
+        .recording-section {
+            margin-top: 25px;
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.7);
+        }
+
+        .recording-section p {
+            font-family: 'Caveat', cursive;
+            font-size: 1.2rem;
+            color: #6b1545;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .record-button {
+            background: linear-gradient(135deg, #ff1493, #ff69b4);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 10px 5px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(255, 20, 147, 0.4);
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        .record-button:active {
+            transform: scale(0.95);
+        }
+
+        .record-button.recording {
+            background: linear-gradient(135deg, #ff0000, #ff4444);
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .record-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .recording-status {
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1rem;
+            color: #ff1493;
+            margin: 10px 0;
             font-weight: 600;
         }
 
@@ -404,7 +509,7 @@
             transform: scale(0.95);
         }
 
-        /* Message Form in Week Pages */
+        /* Inline Message Form */
         .inline-message-form {
             margin-top: 25px;
             padding: 25px;
@@ -497,7 +602,7 @@
             border: 2px solid rgba(255, 255, 255, 0.4);
         }
 
-        /* Romantic Card */
+        /* Glass Card */
         .glass-card {
             background: rgba(255, 255, 255, 0.5);
             backdrop-filter: blur(20px);
@@ -541,7 +646,7 @@
             font-weight: 600;
         }
 
-        /* Long Message Page */
+        /* Long Message Container */
         .long-message-container {
             background: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(15px);
@@ -599,8 +704,8 @@
             box-shadow: 0 0 20px rgba(255, 20, 147, 0.3);
         }
 
-        /* Valentine Proposal Page */
-        #page21 h2 {
+        /* Valentine Proposal */
+        #page22 h2 {
             font-family: 'Sacramento', cursive;
             font-size: 3.2rem;
             color: white;
@@ -649,7 +754,7 @@
             position: relative;
         }
 
-        /* Message Box Page */
+        /* Message Form */
         .message-form {
             background: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(15px);
@@ -704,7 +809,7 @@
             font-family: 'Quicksand', sans-serif;
         }
 
-        /* Marriage Proposal Page */
+        /* Marriage Card */
         .marriage-card {
             background: rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(20px);
@@ -737,7 +842,7 @@
             margin-top: 30px;
         }
 
-        /* Wishes Page */
+        /* Wishes Container */
         .wishes-container {
             background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(15px);
@@ -790,7 +895,7 @@
         }
 
         /* Final Celebration */
-        #page27 h1 {
+        #page28 h1 {
             font-family: 'Pacifico', cursive;
             font-size: 3.5rem;
             color: white;
@@ -803,7 +908,7 @@
             backdrop-filter: blur(10px);
         }
 
-        #page27 p {
+        #page28 p {
             font-family: 'Satisfy', cursive;
             font-size: 1.6rem;
             color: white;
@@ -870,44 +975,53 @@
             line-height: 1.8;
         }
 
+        /* Error/Success Messages */
+        .error-message, .success-message {
+            font-size: 0.95rem;
+            margin-top: 10px;
+            font-weight: 600;
+            display: none;
+        }
+
+        .error-message {
+            color: #ff1493;
+        }
+
+        .success-message {
+            color: #4CAF50;
+        }
+
         /* Small screens */
         @media (max-width: 380px) {
             #page1 h1 { font-size: 3rem; }
             .week-page h2 { font-size: 2rem; }
             .glass-card h2 { font-size: 2.2rem; }
             .marriage-card h2 { font-size: 2.8rem; }
-            #page21 h2 { font-size: 2.8rem; }
+            #page22 h2 { font-size: 2.8rem; }
             .nav-button, .prev-button { padding: 12px 28px; font-size: 1rem; }
         }
 
-        /* Circle Decorations */
         .circle-decoration {
             position: absolute;
             border-radius: 50%;
             opacity: 0.1;
             pointer-events: none;
         }
-
-        /* Error message */
-        .error-message {
-            color: #ff1493;
-            font-size: 0.95rem;
-            margin-top: 10px;
-            font-weight: 600;
-            display: none;
-        }
     </style>
 </head>
 <body>
     <!-- Floating Hearts Background -->
     <div class="floating-hearts" id="floatingHearts"></div>
+    
+    <!-- Continuous Sparkles -->
+    <div class="sparkle-container" id="sparkleContainer"></div>
 
     <!-- Music Control Button -->
     <button class="music-control" id="musicControl" title="Play Music">🎵</button>
 
     <!-- Audio Element -->
     <audio id="bgMusic" loop>
-        <source src="Romantic-music.mp3" type="audio/mpeg">
+        <source src="romantic-music.mp3" type="audio/mpeg">
     </audio>
 
     <!-- PAGE 1: Opening -->
@@ -984,7 +1098,7 @@
         </div>
     </div>
 
-    <!-- PAGE 8: Audio Singing -->
+    <!-- PAGE 8: My Singing -->
     <div class="page" id="page8">
         <div class="audio-container">
             <h2>Let's sing this with me 🎤💕</h2>
@@ -996,19 +1110,38 @@
         </div>
         <div class="nav-buttons">
             <button class="prev-button" onclick="goToPage(7)">← Previous</button>
-            <button class="nav-button" onclick="goToPage(9)" id="audioNextBtn">Next 💕</button>
+            <button class="nav-button" onclick="goToPage(9)">Next 💕</button>
         </div>
     </div>
 
-    <!-- PAGE 9: Your Turn to Sing -->
+    <!-- PAGE 9: Your Turn to Sing with Recording -->
     <div class="page" id="page9">
         <div class="audio-container">
             <h2>Now your turn! 🎤✨</h2>
             <p class="audio-message">Sing a song for your Bubu 🥰</p>
+            
+            <div class="recording-section">
+                <p>🎙️ Record your beautiful voice here:</p>
+                <button class="record-button" id="startRecord" onclick="startRecording()">🔴 Start Recording</button>
+                <button class="record-button" id="stopRecord" onclick="stopRecording()" style="display:none;">⏹️ Stop Recording</button>
+                <p class="recording-status" id="recordStatus"></p>
+                
+                <div id="playbackSection" style="display:none; margin-top: 20px;">
+                    <p>🎵 Listen to your recording:</p>
+                    <audio id="recordedAudio" controls style="width: 100%; margin: 15px 0;"></audio>
+                    <button class="record-button" onclick="downloadRecording()">📥 Download Recording</button>
+                    <p style="font-family: 'Caveat', cursive; font-size: 1.1rem; color: #6b1545; margin-top: 15px; font-weight: 600;">
+                        💌 After downloading, please send this audio file to: <strong>biplabg3038k@gmail.com</strong>
+                    </p>
+                    <p class="success-message" id="recordSuccess" style="display:block; color: #4CAF50; margin-top: 10px;">
+                        ✅ Recording complete! Download and email it to continue.
+                    </p>
+                </div>
+            </div>
         </div>
         <div class="nav-buttons">
             <button class="prev-button" onclick="goToPage(8)">← Previous</button>
-            <button class="nav-button" onclick="goToPage(10)">Next 💕</button>
+            <button class="nav-button" id="nextAfterRecord" onclick="checkRecordingAndProceed()" disabled>Next 💕</button>
         </div>
     </div>
 
@@ -1124,12 +1257,13 @@
         </div>
     </div>
 
-    <!-- PAGES 18-19: Videos -->
+    <!-- PAGE 18: First Video -->
     <div class="page video-page" id="page18">
         <div class="video-container">
             <div class="video-wrapper">
                 <iframe 
-                    src="https://www.youtube.com/embed/cZv9EWJgo8s" 
+                    id="video1"
+                    src="https://www.youtube.com/embed/cZv9EWJgo8s?enablejsapi=1" 
                     frameborder="0" 
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                     allowfullscreen>
@@ -1143,11 +1277,13 @@
         </div>
     </div>
 
+    <!-- PAGE 19: Second Video (UPDATED) -->
     <div class="page video-page" id="page19">
         <div class="video-container">
             <div class="video-wrapper">
                 <iframe 
-                    src="https://www.youtube.com/embed/kgAx_sQ0mqE" 
+                    id="video2"
+                    src="https://www.youtube.com/embed/EVa9BizBkEk?enablejsapi=1" 
                     frameborder="0" 
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                     allowfullscreen>
@@ -1161,8 +1297,39 @@
         </div>
     </div>
 
-    <!-- PAGE 20: Romantic Card -->
-    <div class="page" id="page20">
+    <!-- PAGE 20: NEW Third Video with Promise Message -->
+    <div class="page video-page" id="page20">
+        <div class="video-container">
+            <div class="video-wrapper">
+                <iframe 
+                    id="video3"
+                    src="https://www.youtube.com/embed/5wrIZXYQdkc?enablejsapi=1" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+            <p class="video-message" style="font-size: 1.4rem;">
+                Promise me you, you never leave me 🥺<br>
+                Promise me you never put any barriers between us 🥺<br>
+                Like you open umbrella to stop your loving rain to reach you,<br>
+                Like you find a shadow to avoid your beloved ☀️
+            </p>
+            
+            <div class="inline-message-form" style="margin-top: 25px; background: rgba(255, 255, 255, 0.6);">
+                <h3>Promise me these things, my Kishori 💕</h3>
+                <textarea id="promiseMessage2" placeholder="Write your promises to me..."></textarea>
+                <button class="inline-submit-btn" onclick="submitPromiseMessage2()">Send My Promises 💌</button>
+            </div>
+        </div>
+        <div class="nav-buttons">
+            <button class="prev-button" onclick="goToPage(19)">← Previous</button>
+            <button class="nav-button" onclick="goToPage(21)">Next Page 💕</button>
+        </div>
+    </div>
+
+    <!-- PAGE 21: Romantic Card -->
+    <div class="page" id="page21">
         <div class="glass-card">
             <h2>Kishori 💓 weds 💓 Bubu</h2>
             <div class="love-message">
@@ -1182,37 +1349,37 @@
             </div>
         </div>
         <div class="nav-buttons">
-            <button class="prev-button" onclick="goToPage(19)">← Previous</button>
-            <button class="nav-button" onclick="goToPage(21)">Next 💕</button>
+            <button class="prev-button" onclick="goToPage(20)">← Previous</button>
+            <button class="nav-button" onclick="goToPage(22)">Next 💕</button>
         </div>
     </div>
 
-    <!-- PAGE 21: Valentine Proposal -->
-    <div class="page" id="page21">
+    <!-- PAGE 22: Valentine Proposal -->
+    <div class="page" id="page22">
         <h2>Will you be my Valentine, Kishori? 💘</h2>
         <div class="button-container">
             <button class="proposal-btn btn-yes" onclick="valentineYes()">YES 💖</button>
             <button class="proposal-btn btn-no" id="noBtn" ontouchstart="moveNoButton(event)" onmouseover="moveNoButton(event)" onclick="noButtonClick()">NO 🙈</button>
         </div>
         <div class="nav-buttons">
-            <button class="prev-button" onclick="goToPage(20)">← Previous</button>
+            <button class="prev-button" onclick="goToPage(21)">← Previous</button>
         </div>
     </div>
 
-    <!-- PAGE 22: Message Box -->
-    <div class="page" id="page22">
+    <!-- PAGE 23: Message Box -->
+    <div class="page" id="page23">
         <form class="message-form" onsubmit="submitMessage(event)">
             <h2>Write something for your Bubu 😘</h2>
             <textarea id="messageText" placeholder="Share your thoughts with me, my love..."></textarea>
             <button type="submit" class="submit-btn">Send Message 💌</button>
         </form>
         <div class="nav-buttons">
-            <button class="prev-button" onclick="goToPage(21)">← Previous</button>
+            <button class="prev-button" onclick="goToPage(22)">← Previous</button>
         </div>
     </div>
 
-    <!-- PAGE 23: Long Message Before Marriage -->
-    <div class="page" id="page23">
+    <!-- PAGE 24: Long Message Before Marriage (UPDATED to 120 words) -->
+    <div class="page" id="page24">
         <div class="long-message-container">
             <p>I love you too much my Kishori 🥰😘.</p>
             <p>Now I'm saying something very serious. I promise you to be forever with you, in all your ups and down.</p>
@@ -1238,18 +1405,19 @@
             
             <div class="message-form">
                 <h3>Share your thoughts here 💕</h3>
+                <p style="font-size: 0.9rem; color: #ff1493; margin-bottom: 10px;">✍️ Please write at least 120 words</p>
                 <textarea id="longMessage" placeholder="Write everything you want to tell me..."></textarea>
-                <p class="error-message" id="longMsgError">Please write at least 150 words to continue 💕</p>
+                <p class="error-message" id="longMsgError">Please write at least 120 words to continue 💕</p>
                 <button type="button" class="submit-btn" onclick="submitLongMessage()">Send to Bubu 💌</button>
             </div>
         </div>
         <div class="nav-buttons">
-            <button class="prev-button" onclick="goToPage(22)">← Previous</button>
+            <button class="prev-button" onclick="goToPage(23)">← Previous</button>
         </div>
     </div>
 
-    <!-- PAGE 24: Marriage Proposal -->
-    <div class="page" id="page24">
+    <!-- PAGE 25: Marriage Proposal -->
+    <div class="page" id="page25">
         <div class="marriage-card">
             <h2>Kishori, Will you marry me? 💍</h2>
             <p>Biye korbe amai? 💑</p>
@@ -1262,12 +1430,12 @@
             </div>
         </div>
         <div class="nav-buttons">
-            <button class="prev-button" onclick="goToPage(23)">← Previous</button>
+            <button class="prev-button" onclick="goToPage(24)">← Previous</button>
         </div>
     </div>
 
-    <!-- PAGE 25: Tor kache ekta jinis chaibo? -->
-    <div class="page" id="page25">
+    <!-- PAGE 26: Tor kache ekta jinis chaibo? -->
+    <div class="page" id="page26">
         <div class="week-content">
             <h2 style="font-family: 'Sacramento', cursive; font-size: 2.8rem; color: #ff1493; margin-bottom: 30px;">Tor kache ekta jinis chaibo? 🥺</h2>
             <div class="button-container">
@@ -1276,12 +1444,12 @@
             </div>
         </div>
         <div class="nav-buttons">
-            <button class="prev-button" onclick="goToPage(24)">← Previous</button>
+            <button class="prev-button" onclick="goToPage(25)">← Previous</button>
         </div>
     </div>
 
-    <!-- PAGE 26: Wishes -->
-    <div class="page" id="page26">
+    <!-- PAGE 27: Wishes -->
+    <div class="page" id="page27">
         <div class="wishes-container">
             <div class="wish-item">
                 <p>Ami future e tor sob mood swings er daitto nite chai 🥰</p>
@@ -1317,13 +1485,13 @@
             </div>
         </div>
         <div class="nav-buttons">
-            <button class="prev-button" onclick="goToPage(25)">← Previous</button>
-            <button class="nav-button" onclick="goToPage(27)">Continue 💕</button>
+            <button class="prev-button" onclick="goToPage(26)">← Previous</button>
+            <button class="nav-button" onclick="goToPage(28)">Continue 💕</button>
         </div>
     </div>
 
-    <!-- PAGE 27: Final Page - Ami tomar k hoi? -->
-    <div class="page" id="page27">
+    <!-- PAGE 28: Final Page -->
+    <div class="page" id="page28">
         <form class="message-form" onsubmit="submitFinalMessage(event)">
             <h2>Ami tomar k hoi? 🥰</h2>
             <textarea id="finalMessage" placeholder="Tell me who I am to you..."></textarea>
@@ -1334,7 +1502,7 @@
             <p style="margin-top: 15px; font-size: 1.4rem; font-weight: bold;">Video call koro ebar amai 🥰😚</p>
         </div>
         <div class="nav-buttons">
-            <button class="prev-button" onclick="goToPage(26)">← Previous</button>
+            <button class="prev-button" onclick="goToPage(27)">← Previous</button>
         </div>
     </div>
 
@@ -1343,22 +1511,29 @@
         let wishNoMoves = 0;
         const wishNoTexts = ["Chaibo na toh ?😡", "Abar vab 😘", "Ami chaiboi arr toke diteo hobe"];
         let wishNoIndex = 0;
+        
+        // Audio Recording Variables
+        let mediaRecorder;
+        let audioChunks = [];
+        let recordedBlob;
+        let hasRecorded = false;
 
-        // Navigate to specific page
+        // Navigate to page
         function goToPage(pageNumber) {
             document.getElementById('page' + currentPage).classList.remove('active');
             currentPage = pageNumber;
             document.getElementById('page' + currentPage).classList.add('active');
             createSparkles();
+            createContinuousSparkles();
             window.scrollTo(0, 0);
         }
 
         // Floating Hearts
         function createFloatingHearts() {
             const container = document.getElementById('floatingHearts');
-            const heartSymbols = ['💕', '💖', '💗', '💓', '💝', '❤️', '🌸', '🌺', '✨', '💫'];
+            const heartSymbols = ['💕', '💖', '💗', '💓', '💝', '❤️', '🌸', '🌺', '✨', '💫', '🌟', '⭐'];
             
-            for (let i = 0; i < 20; i++) {
+            for (let i = 0; i < 25; i++) {
                 const heart = document.createElement('div');
                 heart.className = 'heart';
                 heart.textContent = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
@@ -1372,7 +1547,7 @@
         // Sparkles Effect
         function createSparkles() {
             const currentPageEl = document.getElementById('page' + currentPage);
-            for (let i = 0; i < 5; i++) {
+            for (let i = 0; i < 8; i++) {
                 const sparkle = document.createElement('div');
                 sparkle.className = 'sparkle';
                 sparkle.style.left = Math.random() * 100 + '%';
@@ -1384,9 +1559,93 @@
             }
         }
 
+        // Continuous Sparkles (NEW!)
+        function createContinuousSparkles() {
+            const container = document.getElementById('sparkleContainer');
+            container.innerHTML = ''; // Clear existing
+            
+            for (let i = 0; i < 15; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.className = 'continuous-sparkle';
+                sparkle.style.left = Math.random() * 100 + '%';
+                sparkle.style.top = Math.random() * 100 + '%';
+                sparkle.style.animationDelay = Math.random() * 3 + 's';
+                container.appendChild(sparkle);
+            }
+        }
+
         // Audio functions
         function showNextSongMessage() {
             document.getElementById('afterSongMessage').style.display = 'block';
+            resumeBackgroundMusic(); // Resume music when my voice ends
+        }
+
+        // Audio Recording Functions (NEW!)
+        async function startRecording() {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                mediaRecorder = new MediaRecorder(stream);
+                audioChunks = [];
+
+                mediaRecorder.ondataavailable = (event) => {
+                    audioChunks.push(event.data);
+                };
+
+                mediaRecorder.onstop = () => {
+                    recordedBlob = new Blob(audioChunks, { type: 'audio/wav' });
+                    const audioUrl = URL.createObjectURL(recordedBlob);
+                    document.getElementById('recordedAudio').src = audioUrl;
+                    document.getElementById('playbackSection').style.display = 'block';
+                    hasRecorded = true;
+                    document.getElementById('nextAfterRecord').disabled = false;
+                    document.getElementById('recordStatus').textContent = '✅ Recording saved! You can now download and send it.';
+                };
+
+                mediaRecorder.start();
+                document.getElementById('startRecord').style.display = 'none';
+                document.getElementById('stopRecord').style.display = 'inline-block';
+                document.getElementById('startRecord').classList.add('recording');
+                document.getElementById('recordStatus').textContent = '🔴 Recording... Sing your heart out!';
+                
+                // Pause background music while recording
+                pauseBackgroundMusic();
+            } catch (err) {
+                alert('Please allow microphone access to record your voice! 🎤');
+                console.error('Error accessing microphone:', err);
+            }
+        }
+
+        function stopRecording() {
+            if (mediaRecorder && mediaRecorder.state !== 'inactive') {
+                mediaRecorder.stop();
+                mediaRecorder.stream.getTracks().forEach(track => track.stop());
+                document.getElementById('stopRecord').style.display = 'none';
+                document.getElementById('startRecord').style.display = 'inline-block';
+                document.getElementById('startRecord').classList.remove('recording');
+            }
+        }
+
+        function downloadRecording() {
+            if (recordedBlob) {
+                const url = URL.createObjectURL(recordedBlob);
+                const a = document.createElement('a');
+                a.style.display = 'none';
+                a.href = url;
+                a.download = 'kishori-singing-for-bubu.wav';
+                document.body.appendChild(a);
+                a.click();
+                URL.revokeObjectURL(url);
+                document.body.removeChild(a);
+                alert('Recording downloaded! Please send this file to biplabg3038k@gmail.com 💌');
+            }
+        }
+
+        function checkRecordingAndProceed() {
+            if (hasRecorded) {
+                goToPage(10);
+            } else {
+                alert('Please record your singing first! I want to hear your beautiful voice! 🎤💕');
+            }
         }
 
         // Interactive Buttons
@@ -1410,7 +1669,7 @@
             alert('😘 *Kisses you softly* I love you so much, my Kuchupuchu 💋');
         }
 
-        // Submit Propose Message
+        // Submit Messages
         function submitProposeMessage() {
             const message = document.getElementById('proposeMessage').value;
             if (message.trim() === '') {
@@ -1430,7 +1689,6 @@
             alert('Proposal sent to Bubu! 💌');
         }
 
-        // Submit Promise Message
         function submitPromiseMessage() {
             const message = document.getElementById('promiseMessage').value;
             if (message.trim() === '') {
@@ -1450,12 +1708,30 @@
             alert('Promises sent to Bubu! 💌');
         }
 
-        // Valentine Proposal - YES
-        function valentineYes() {
-            goToPage(22);
+        function submitPromiseMessage2() {
+            const message = document.getElementById('promiseMessage2').value;
+            if (message.trim() === '') {
+                alert('Please write your promises first! 💕');
+                return;
+            }
+            
+            console.log('Promise Message 2:', message);
+            
+            const subject = encodeURIComponent('Special Promises from Kishori 💕');
+            const body = encodeURIComponent('My Bubu,\n\nI promise you:\n\n' + message + '\n\nWith all my love,\nKishori 💖');
+            
+            setTimeout(() => {
+                window.location.href = `mailto:biplabg3038k@gmail.com?subject=${subject}&body=${body}`;
+            }, 500);
+            
+            alert('Promises sent to Bubu! 💌');
         }
 
-        // NO Button Movement
+        // Valentine Proposal
+        function valentineYes() {
+            goToPage(23);
+        }
+
         let noButtonMoves = 0;
         function moveNoButton(event) {
             event.preventDefault();
@@ -1502,17 +1778,18 @@
             }, 500);
             
             setTimeout(() => {
-                goToPage(23);
+                goToPage(24);
             }, 1000);
         }
 
-        // Submit Long Message (minimum 10 words)
+        // Submit Long Message (UPDATED to 120 words)
         function submitLongMessage() {
             const message = document.getElementById('longMessage').value;
             const wordCount = message.trim().split(/\s+/).filter(word => word.length > 0).length;
             
-            if (wordCount < 10) {
+            if (wordCount < 120) {
                 document.getElementById('longMsgError').style.display = 'block';
+                document.getElementById('longMsgError').textContent = `Please write at least 120 words (you have ${wordCount} words) 💕`;
                 return;
             }
             
@@ -1528,16 +1805,15 @@
             }, 500);
             
             setTimeout(() => {
-                goToPage(24);
+                goToPage(25);
             }, 1000);
         }
 
-        // Marriage Proposal - YES
+        // Marriage Proposal
         function marriageYes() {
-            goToPage(25);
+            goToPage(26);
         }
 
-        // Marriage NO Button
         let marriageNoMoves = 0;
         function moveMarriageNoButton(event) {
             event.preventDefault();
@@ -1564,7 +1840,7 @@
             alert('Kishori! I know you love me! Just say YES! 😘💍');
         }
 
-        // Wish No Button
+        // Wish Functions
         function moveWishNoButton(event) {
             event.preventDefault();
             const btn = document.getElementById('wishNoBtn');
@@ -1594,17 +1870,16 @@
         }
 
         function grantWish() {
-            goToPage(26);
+            goToPage(27);
         }
 
-        // Mark Wish as Granted
         function markWishGranted(button) {
             button.textContent = '✓ Granted';
             button.classList.add('granted');
             button.disabled = true;
         }
 
-        // Submit Final Message
+        // Final Message
         function submitFinalMessage(event) {
             event.preventDefault();
             const message = document.getElementById('finalMessage').value;
@@ -1626,10 +1901,26 @@
             alert('Message sent! Now video call me! 🥰😚');
         }
 
-        // Music Control
+        // Music Control with Auto Pause/Resume (NEW FEATURE!)
         const musicBtn = document.getElementById('musicControl');
         const bgMusic = document.getElementById('bgMusic');
+        const myVoice = document.getElementById('myVoice');
         let isPlaying = false;
+        let wasPausedByVideo = false;
+
+        function pauseBackgroundMusic() {
+            if (isPlaying && !bgMusic.paused) {
+                bgMusic.pause();
+                wasPausedByVideo = true;
+            }
+        }
+
+        function resumeBackgroundMusic() {
+            if (wasPausedByVideo && isPlaying) {
+                bgMusic.play();
+                wasPausedByVideo = false;
+            }
+        }
 
         musicBtn.addEventListener('click', () => {
             if (isPlaying) {
@@ -1641,15 +1932,60 @@
                     musicBtn.textContent = '🔇';
                     isPlaying = true;
                 }).catch((error) => {
-                    alert('Please add a music file named "Romantic-music.mp3"! 🎵');
+                    alert('Please add a music file named "romantic-music.mp3"! 🎵');
                 });
             }
+        });
+
+        // Auto-pause background music when myVoice plays
+        if (myVoice) {
+            myVoice.addEventListener('play', () => {
+                pauseBackgroundMusic();
+            });
+            
+            myVoice.addEventListener('pause', () => {
+                resumeBackgroundMusic();
+            });
+            
+            myVoice.addEventListener('ended', () => {
+                resumeBackgroundMusic();
+            });
+        }
+
+        // Detect when video page is active and handle music
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.attributeName === 'class') {
+                    const target = mutation.target;
+                    if (target.classList.contains('active')) {
+                        // Check if this is a video page
+                        if (target.classList.contains('video-page')) {
+                            pauseBackgroundMusic();
+                        }
+                    } else {
+                        // Page is no longer active
+                        if (target.classList.contains('video-page')) {
+                            setTimeout(() => {
+                                if (!document.querySelector('.video-page.active')) {
+                                    resumeBackgroundMusic();
+                                }
+                            }, 500);
+                        }
+                    }
+                }
+            });
+        });
+
+        // Observe all video pages
+        document.querySelectorAll('.video-page').forEach((page) => {
+            observer.observe(page, { attributes: true });
         });
 
         // Initialize
         window.addEventListener('load', () => {
             createFloatingHearts();
             createSparkles();
+            createContinuousSparkles();
             
             // Check photos
             const img1 = document.getElementById('photo1');
@@ -1662,6 +1998,9 @@
                 this.src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="300" height="400"><rect width="300" height="400" fill="%23e6b8ff"/><text x="50%" y="50%" font-size="16" fill="%23fff" text-anchor="middle">Add photo2.jpg 💕</text></svg>';
             };
         });
+
+        // Continuous sparkle refresh
+        setInterval(createContinuousSparkles, 5000);
     </script>
 </body>
 </html>
