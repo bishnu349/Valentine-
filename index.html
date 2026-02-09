@@ -1378,7 +1378,7 @@
         </div>
     </div>
 
-    <!-- PAGE 24: Long Message Before Marriage (UPDATED to 120 words) -->
+    <!-- PAGE 24: Long Message Before Marriage (UPDATED to 600 words) -->
     <div class="page" id="page24">
         <div class="long-message-container">
             <p>I love you too much my Kishori 🥰😘.</p>
@@ -1405,9 +1405,9 @@
             
             <div class="message-form">
                 <h3>Share your thoughts here 💕</h3>
-                <p style="font-size: 0.9rem; color: #ff1493; margin-bottom: 10px;">✍️ Please write at least 120 words</p>
+                <p style="font-size: 0.9rem; color: #ff1493; margin-bottom: 10px;">✍️ Please write at least <b>600 words</b></p>
                 <textarea id="longMessage" placeholder="Write everything you want to tell me..."></textarea>
-                <p class="error-message" id="longMsgError">Please write at least 120 words to continue 💕</p>
+                <p class="error-message" id="longMsgError">Please write at least 600 words to continue 💕</p>
                 <button type="button" class="submit-btn" onclick="submitLongMessage()">Send to Bubu 💌</button>
             </div>
         </div>
@@ -1785,14 +1785,14 @@
             }, 1000);
         }
 
-        // Submit Long Message (UPDATED to 120 words)
+        // Submit Long Message (UPDATED to 600 words)
         function submitLongMessage() {
             const message = document.getElementById('longMessage').value;
             const wordCount = message.trim().split(/\s+/).filter(word => word.length > 0).length;
             
-            if (wordCount < 120) {
+            if (wordCount < 600) {
                 document.getElementById('longMsgError').style.display = 'block';
-                document.getElementById('longMsgError').textContent = `Please write at least 120 words (you have ${wordCount} words) 💕`;
+                document.getElementById('longMsgError').textContent = `Please write at least 600 words (you have ${wordCount} words) 💕`;
                 return;
             }
             
@@ -1901,7 +1901,7 @@
                 window.location.href = `mailto:biplabg3038k@gmail.com?subject=${subject}&body=${body}`;
             }, 500);
             
-            alert('Message sent! Now video call me! 🥰😚');
+            alert('Message sent! Now video call me! 🫂🥰😚');
         }
 
         // Music Control with Auto Pause/Resume (NEW FEATURE!)
